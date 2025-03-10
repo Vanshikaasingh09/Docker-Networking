@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    image: nginx
+    networks:
+      - my_custom_network
+    ports:
+      - "8080:80"
+  
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    networks:
+      - my_custom_network
+
+networks:
+  my_custom_network:
+    driver: bridge
